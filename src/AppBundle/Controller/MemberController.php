@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Members;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -32,6 +33,15 @@ class MemberController extends Controller
         dump($form->get('sex')->getData());
 
         if ($form->isValid()){
+            $data = $form->getData();
+            $members = new Members();
+            $members->setName($data['name']);
+            $members->setEmail($data['email']);
+            $members->setSex($data['sex']);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($members);
+            $em->flush();
+
             return $this->redirect($this->generateUrl('app_member_complete'));
         }
         return $this->redirect($this->generateUrl('app_member_index'));

@@ -26,6 +26,11 @@ class MemberController extends Controller
     public function indexPostAction(Request $request){
         $form = $this->createMemberForm();
         $form->handleRequest($request);
+
+        dump($form->get('name')->getData());
+        dump($form->get('email')->getData());
+        dump($form->get('sex')->getData());
+
         if ($form->isValid()){
             return $this->redirect($this->generateUrl('app_member_complete'));
         }

@@ -1,0 +1,6 @@
+<h4>Game Date</h4>
+<ul>
+{% for schedule in scheduleList %}
+    <li>{{ schedule.date }} {{ schedule.time }} {{ schedule.place }}</li>
+{% endfor %}
+</ul>

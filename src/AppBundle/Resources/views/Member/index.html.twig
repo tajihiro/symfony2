@@ -1,0 +1,38 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Member:index{% endblock %}
+
+{% block body %}
+<h1>Member Page</h1>
+    {{ form_start(form) }}
+    <table>
+        <tr>
+            <th>お名前</th>
+            <td>
+                {{ form_widget(form.name) }}
+                {{ form_errors(form.name) }}
+            </td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+            </td>
+        </tr>
+        <tr>
+            <th>性別</th>
+            <td>
+                {{ form_widget(form.sex) }}
+                {{ form_errors(form.sex) }}
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                {{ form_widget(form.submit) }}
+            </td>
+        </tr>
+    </table>
+    {{ form_end(form) }}
+    <a href="{{ path("app_toppage_index") }}">Top Page</a>
+{% endblock %}

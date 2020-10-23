@@ -1,0 +1,11 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}AppBundle:Toppage:index{% endblock %}
+
+{% block body %}
+<h1>こんにちは。たぢさん。</h1>
+    {{ render(controller("AppBundle:Schedule:index")) }}
+
+    <a href="{{ path("app_member_index") }}">Member Page</a>
+
+{% endblock %}
